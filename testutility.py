@@ -11,14 +11,17 @@ def convert_to_datetime(df):
         if column.endswith("Date") and df[column].dtype == 'object':
             try:
                 df[column] = pd.to_datetime(df[column], errors='coerce')
+
             except ValueError as e:
                 print(f"Error converting column {column} to datetime: {e}")
                 
         elif column.endswith("TimeRaw") and df[column].dtype == 'object':
             try:
                 df[column] = pd.to_datetime(df[column], errors='coerce')
+            
             except ValueError as e:
                 print(f"Error converting column {column} to timestamp: {e}")
+    print("Success convert  to datetime")
 
 def replacer(string, char):
     import re
